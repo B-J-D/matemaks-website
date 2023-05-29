@@ -7,31 +7,33 @@
     <title>Matemaks</title>
 </head>
 <body>
-    <header>
-        <h1>MATEMAKS</h1>
-        <button id="reset-grades" class="top-right">Reset Grades</button>
-    </header>
-    <hr>
-    <div id="average-display" class="center">
-        <h2>0.00</h2>
+    <div class="main">
+        <header>
+            <h1>MATEMAKS</h1>
+            <button id="reset-grades" class="top-right">Reset Grades</button>
+        </header>
+        <hr>
+        <div id="average-display" class="center">
+            <h2 class="white">0.00</h2>
+        </div>
+        <hr>
+        <input type="number" id="grade-input" placeholder="Enter grade" min="0" max="10" step="0.01">
+        <div class="grade-categories">
+            <div class="category catA">
+                <button id="add-category-a">Add A</button>
+                <div id="grades-a" class="grades-container"></div>
+            </div>
+            <div class="category catB">
+                <button id="add-category-b">Add B</button>
+                <div id="grades-b" class="grades-container"></div>
+            </div>
+            <div class="category catC">
+                <button id="add-category-c">Add C</button>
+                <div id="grades-c" class="grades-container"></div>
+            </div>
+        </div>
+        <script type="module" src="grades.js"></script>
     </div>
-    <hr>
-    <input type="number" id="grade-input" placeholder="Enter grade" min="0" max="10" step="0.01">
-    <div class="grade-categories">
-        <div class="category">
-            <button id="add-category-a">Add A</button>
-            <div id="grades-a" class="grades-container"></div>
-        </div>
-        <div class="category">
-            <button id="add-category-b">Add B</button>
-            <div id="grades-b" class="grades-container"></div>
-        </div>
-        <div class="category">
-            <button id="add-category-c">Add C</button>
-            <div id="grades-c" class="grades-container"></div>
-        </div>
-    </div>
-    <script type="module" src="grades.js"></script>
 </body>
 </html>
 </button></title>

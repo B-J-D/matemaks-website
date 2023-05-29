@@ -1,3 +1,4 @@
+
 document.addEventListener("DOMContentLoaded", () => {
   const gradeInput = document.getElementById("grade-input");
   const addCategoryA = document.getElementById("add-category-a");
@@ -43,9 +44,9 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function addGrade(category) {
-    const gradeValue = parseFloat(gradeInput.value);
-    if (isNaN(gradeValue) || gradeValue < 0 || gradeValue > 10) {
-      alert("Please enter a valid grade between 0 and 10.");
+    const gradeValue = parseFloat(gradeInput.value) || 0;
+    if (isNaN(gradeValue) || gradeValue < 0 || gradeValue > 12) {
+      alert("Please enter a valid grade between 0 and 12.");
       return;
     }
 

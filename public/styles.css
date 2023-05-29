@@ -1,5 +1,26 @@
+@media screen and (orientation: landscape) {
+    .main {
+        margin: 1em;
+        width: 40vw;
+        background-color: #141414; /* Changed to a lighter color */
+        border-radius: 10px; /* Added rounded edges */
+        height: 100vh;
+    }
+}
+
+@media screen and (orientation: portrait) {
+    .main {
+        width: 100vw;
+    }
+}
+
+
 body {
-    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: "Open Sans", sans-serif;
     background-color: #000000;
     color: #ffffff;
     margin: 0;
@@ -7,18 +28,22 @@ body {
 }
 
 header {
-    height: 10vh;
+    height: 2em;
     display: flex;
     justify-content: center;
     align-items: center;
-    gap:0.5em;
+    gap: 0.5em;
     padding: 0.5em;
     font-size: 1.5em;
     font-weight: bold;
+    text-shadow:
+    0 0 7px #fff,
+    0 0 50px #fff;
 }
 
 hr {
     border: 1px solid #ffffff;
+    width: 90%;
 }
 
 .top-right {
@@ -33,20 +58,29 @@ hr {
 }
 
 #average-display h2 {
-    font-size: 3em;
-    margin: 20px;
+    font-size: 5em;
+    margin: 10px;
 }
 
 #average-display h2.white {
     color: #ffffff;
+    text-shadow:
+        0 0 7px #fff,
+        0 0 50px #fff;
 }
 
 #average-display h2.red {
     color: #ff0000;
+    text-shadow:
+    0 0 7px #ff0000,
+    0 0 50px #ff0000;
 }
 
 #average-display h2.green {
     color: #00ff00;
+    text-shadow:
+    0 0 7px #00ff00,
+    0 0 50px #00ff00;
 }
 
 input[type="number"] {
@@ -55,7 +89,7 @@ input[type="number"] {
     padding: 10px;
     border: 1px solid #ffffff;
     border-radius: 5px;
-    width: 80vw;
+    width: 90%;
 }
 
 .grade-categories {
@@ -70,14 +104,28 @@ input[type="number"] {
     align-items: center;
 }
 
+.catA .grade{
+    background-color: #ff0000;
+}
+.catB .grade{
+    background-color: #32CD32;
+}
+.catC .grade{
+    background-color: #87CEFA;
+}
+
 button {
-    background-color: #ffffff;
-    color: #000000;
+    background-color: #000000;
+    color: #ffffff;
     border: none;
     padding: 10px;
     border-radius: 5px;
     cursor: pointer;
     margin-bottom: 10px;
+    outline: 1px solid #ffffff; /* Added white outline */
+    text-shadow:
+    0 0 7px #fff,
+    0 0 50px #fff;
 }
 
 /* button.top-right {
@@ -89,7 +137,7 @@ button {
 button:hover {
     background-color: #ffffff;
     color: #000000;
-    border: 1px solid #ffffff;
+    outline: 1px solid #000000;
 }
 
 .grades-container {
@@ -102,11 +150,12 @@ button:hover {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #ffffff;
-    color: #000000;
+    background-color: #000000;
+    color: #000;
     width: 50px;
     height: 50px;
     border-radius: 5px;
     margin-bottom: 10px;
     position: relative;
 }
+
