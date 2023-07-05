@@ -1,4 +1,3 @@
-
 document.addEventListener("DOMContentLoaded", () => {
   const gradeInput = document.getElementById("grade-input");
   const addCategoryA = document.getElementById("add-category-a");
@@ -15,6 +14,13 @@ document.addEventListener("DOMContentLoaded", () => {
     B: [],
     C: []
   };
+
+  // Load grades from browser storage
+  if (localStorage.getItem("grades")) {
+    grades = JSON.parse(localStorage.getItem("grades"));
+    updateGradesDisplay();
+    updateAverage();
+  }
 
   function updateAverage() {
     function sumArray(arr) {
@@ -66,6 +72,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     updateAverage();
     gradeInput.value = ""; // Reset the text box after adding the grade
+
+    // Save grades to browser storage
+    localStorage.setItem("grades", JSON.stringify(grades));
   }
 
   function resetAllGrades() {
@@ -80,12 +89,11 @@ document.addEventListener("DOMContentLoaded", () => {
     gradesC.innerHTML = "";
 
     updateAverage();
+
+    // Clear grades from browser storage
+    localStorage.removeItem("grades");
   }
 
-  addCategoryA.addEventListener("click", () => addGrade("A"));
-  addCategoryB.addEventListener("click", () => addGrade("B"));
-  addCategoryC.addEventListener("click", () => addGrade("C"));
-  resetGrades.addEventListener("click", resetAllGrades);
   function deleteGrade(event) {
     const gradeElement = event.target;
     const category = gradeElement.parentElement.id.split("-")[1].toUpperCase();
@@ -98,11 +106,44 @@ document.addEventListener("DOMContentLoaded", () => {
 
     gradeElement.remove();
     updateAverage();
+
+    // Update grades in browser storage
+    localStorage.setItem("grades", JSON.stringify(grades));
   }
 
+  function updateGradesDisplay() {
+    gradesA.innerHTML = "";
+    gradesB.innerHTML = "";
+    gradesC.innerHTML = "";
+
+    grades.A.forEach((gradeValue) => {
+      const gradeElement = document.createElement("div");
+      gradeElement.classList.add("grade");
+      gradeElement.textContent = gradeValue.toFixed(2);
+      gradesA.appendChild(gradeElement);
+    });
+
+    grades.B.forEach((gradeValue) => {
+      const gradeElement = document.createElement("div");
+      gradeElement.classList.add("grade");
+      gradeElement.textContent = gradeValue.toFixed(2);
+      gradesB.appendChild(gradeElement);
+    });
+
+    grades.C.forEach((gradeValue) => {
+      const gradeElement = document.createElement("div");
+      gradeElement.classList.add("grade");
+      gradeElement.textContent = gradeValue.toFixed(2);
+      gradesC.appendChild(gradeElement);
+    });
+  }
+
+  // Add event listeners
+  addCategoryA.addEventListener("click", () => addGrade("A"));
+  addCategoryB.addEventListener("click", () => addGrade("B"));
+  addCategoryC.addEventListener("click", () => addGrade("C"));
+  resetGrades.addEventListener("click", resetAllGrades);
   gradesA.addEventListener("click", deleteGrade);
   gradesB.addEventListener("click", deleteGrade);
   gradesC.addEventListener("click", deleteGrade);
 });
-
-
